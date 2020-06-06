@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/pageRoutes.dart';
-import 'package:flutter_spacex/screens/companyInfo.dart';
 import 'package:flutter_spacex/screens/home.dart';
 import 'package:flutter_spacex/screens/menu.dart';
 import 'package:flutter_spacex/screens/rootPage.dart';
+import 'package:flutter_spacex/screens/info/companyInfo.dart';
 
 final routes = <String, WidgetBuilder>{
   PageRoutes.companyInfo: (BuildContext context) => CompanyInfo(),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/pageRoutes.dart';
-import 'package:flutter_spacex/screens/companyInfo.dart';
 
 class SideMenu extends StatelessWidget {
   static const String routeName = '/menu';
@@ -8,13 +7,7 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(0),
-      children: <Widget>[
-        Image.network(
-          "https://cdn.dribbble.com/users/610788/screenshots/5157282/spacex.png",
-          height: 145.0,
-          fit: BoxFit.cover,
-        ),
+      children: <Widget>[      
         Card(
           margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
           child: InkWell(
