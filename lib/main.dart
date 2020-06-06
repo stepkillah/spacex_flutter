@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spacex/pageRoutes.dart';
 import 'package:flutter_spacex/screens/companyInfo.dart';
 import 'package:flutter_spacex/screens/home.dart';
+import 'package:flutter_spacex/screens/menu.dart';
+import 'package:flutter_spacex/screens/rootPage.dart';
 
 final routes = <String, WidgetBuilder>{
   PageRoutes.companyInfo: (BuildContext context) => CompanyInfo(),
-  PageRoutes.home: (BuildContext context) => MyHomePage(title: "SpaceX Flutter Demo")
+  PageRoutes.home: (BuildContext context) => MyHomePage(),
+  PageRoutes.menu: (BuildContext context) => SideMenu()
 };
 
 void main() {
@@ -19,6 +22,7 @@ class SpaceXApp extends StatelessWidget {
     return MaterialApp(
       title: 'SpaceX Flutter Demo',
       theme: ThemeData(
+        brightness: Brightness.dark,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -35,9 +39,7 @@ class SpaceXApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: routes,
-      home: MyHomePage(title: 'SpaceX Flutter Demo'),
+      home: RootPage(),
     );
   }
 }
-
-

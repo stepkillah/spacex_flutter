@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spacex/pageRoutes.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class NavDrawer extends StatelessWidget {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.pushReplacementNamed(context, "/home");
+              Navigator.pushReplacementNamed(context, PageRoutes.home);
             },
           ),
           ListTile(
@@ -26,7 +27,16 @@ class NavDrawer extends StatelessWidget {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.pushReplacementNamed(context, "/company_info");
+              Navigator.pushReplacementNamed(context, PageRoutes.companyInfo);
+            },
+          ),
+                ListTile(
+            title: Text("Side menu"),
+            onTap: () {
+              // Update the state of the app
+              // ...
+              // Then close the drawer
+              Navigator.pushReplacementNamed(context, PageRoutes.menu);
             },
           )
         ],
