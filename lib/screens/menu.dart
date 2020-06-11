@@ -20,7 +20,7 @@ class SideMenu extends StatelessWidget {
               leading: Icon(Icons.domain),
               trailing: Icon(Icons.chevron_right),
               title: Text("Company info"),
-              subtitle: Text("General Space X company information"),
+              subtitle: Text("General information about SpaceX and 4Twenty Solutions"),
             ),
           ),
         ),
