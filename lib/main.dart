@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/pageRoutes.dart';
-import 'package:flutter_spacex/screens/home.dart';
+import 'package:flutter_spacex/screens/home/home.dart';
+import 'package:flutter_spacex/screens/launches/launch_details.dart';
+import 'package:flutter_spacex/screens/launches/main_launches.dart';
 import 'package:flutter_spacex/screens/menu.dart';
 import 'package:flutter_spacex/screens/rootPage.dart';
 import 'package:flutter_spacex/screens/info/companyInfo.dart';
+import 'package:intl/intl.dart';
 
 final routes = <String, WidgetBuilder>{
   PageRoutes.companyInfo: (BuildContext context) => CompanyInfo(),
   PageRoutes.home: (BuildContext context) => MyHomePage(),
-  PageRoutes.menu: (BuildContext context) => SideMenu()
+  PageRoutes.menu: (BuildContext context) => SideMenu(),
+  PageRoutes.launchDetails: (BuildContext context) => LaunchDetailsPage(),
+  PageRoutes.launches: (BuildContext context) => LaunchesList(),
 };
 
 void main() {
+  Intl.defaultLocale = 'en_US';
   runApp(SpaceXApp());
 }
 
