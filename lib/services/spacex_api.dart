@@ -5,7 +5,7 @@ import 'package:flutter_spacex/data/apiInfoDto.dart';
 import 'package:flutter_spacex/data/launchDto.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
-const String baseApiUrl = "https://api.spacexdata.com/v3";
+const String baseApiUrl = "https://api.spacexdata.com/v4";
 
 Future<CompanyInfoDto> getCompanyInfo() async {
   final file = await DefaultCacheManager().getSingleFile("$baseApiUrl/info");

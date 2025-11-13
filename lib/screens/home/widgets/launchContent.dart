@@ -7,7 +7,8 @@ Widget buildLoadedData(BuildContext context, Launch launch) {
   return Column(
     children: <Widget>[
       ListTile(
-        leading: Image.network(launch.patchUrl!),
+        leading:
+            launch.patchUrl != null ? Image.network(launch.patchUrl!) : null,
         title: Text(
           launch.name!,
         ),
@@ -23,7 +24,7 @@ Widget buildLoadedData(BuildContext context, Launch launch) {
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: Text(
-          launch.details!,
+          launch.details ?? "No details available",
           style: TextStyle(fontSize: 12.5),
         ),
       ),
