@@ -20,8 +20,7 @@ class SideMenu extends StatelessWidget {
               leading: Icon(Icons.domain),
               trailing: Icon(Icons.chevron_right),
               title: Text("SpaceX"),
-              subtitle: Text(
-                  "General information about SpaceX"),
+              subtitle: Text("General information about SpaceX"),
             ),
           ),
         ),
@@ -30,8 +29,8 @@ class SideMenu extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
-              Navigator.of(context).pushNamed(PageRoutes.companyInfo);
+              print('About app card tapped.');
+              Navigator.of(context).pushNamed(PageRoutes.appInfo);
             },
             child: ListTile(
               leading: Icon(Icons.info),
@@ -46,8 +45,8 @@ class SideMenu extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
-              Navigator.of(context).pushNamed(PageRoutes.companyInfo);
+              print('Author card tapped.');
+              Navigator.of(context).pushNamed(PageRoutes.authorInfo);
             },
             child: ListTile(
               leading: Icon(Icons.verified_user),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/pageRoutes.dart';
 import 'package:flutter_spacex/screens/home/home.dart';
+import 'package:flutter_spacex/screens/info/appInfo.dart';
+import 'package:flutter_spacex/screens/info/authorInfo.dart';
 import 'package:flutter_spacex/screens/launches/launch_details.dart';
 import 'package:flutter_spacex/screens/launches/main_launches.dart';
 import 'package:flutter_spacex/screens/menu.dart';
@@ -14,6 +16,8 @@ final routes = <String, WidgetBuilder>{
   PageRoutes.menu: (BuildContext context) => SideMenu(),
   PageRoutes.launchDetails: (BuildContext context) => LaunchDetailsPage(),
   PageRoutes.launches: (BuildContext context) => LaunchesList(),
+  PageRoutes.authorInfo: (BuildContext context) => AuthorInfo(),
+  PageRoutes.appInfo: (BuildContext context) => AppInfo(),
 };
 
 void main() {
@@ -43,6 +47,17 @@ class SpaceXApp extends StatelessWidget {
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        textTheme: TextTheme(
+            titleLarge: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+              fontSize: 24.0,
+            ),
+            titleMedium: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            )),
       ),
       routes: routes,
       home: RootPage(),

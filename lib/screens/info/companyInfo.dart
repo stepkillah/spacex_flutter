@@ -17,15 +17,6 @@ class CompanyInfo extends StatefulWidget {
 
 class _CompanyInfoState extends State<CompanyInfo> {
   late Future<CompanyInfoDto> futureCompanyInfo;
-  static const TextStyle _cardTitleStyle = TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.w500,
-  );
-  static const TextStyle _sectionTitleStyle = TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.w700,
-    fontSize: 24.0,
-  );
 
   PageController controller = PageController();
   @override
@@ -41,11 +32,6 @@ class _CompanyInfoState extends State<CompanyInfo> {
       throw 'Could not launch $url';
     }
   }
-
-  _linkedIn() => openUrl("https://www.linkedin.com/company/4twenty-solutions/");
-  _onEmail() => openUrl("mailto:support@4twenty.solutions?subject=SpaceX App");
-  _onGitHub() => openUrl("https://github.com/4TwentySolutions");
-  _onGitHubApp() => openUrl("https://github.com/stepkillah/spacex_flutter");
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +75,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                     Text(
                       "Space X",
                       textAlign: TextAlign.center,
-                      style: _sectionTitleStyle,
+                      style: Theme.of(context).textTheme.titleLarge,
                     )
                   ],
                 ),
@@ -101,7 +87,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   title: Text(
                     "Summary",
-                    style: _cardTitleStyle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   subtitle: FutureBuilder(
                     future: futureCompanyInfo,
@@ -134,7 +120,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   title: Text(
                     "General info",
-                    style: _cardTitleStyle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   subtitle: Column(
                     children: <Widget>[
@@ -211,7 +197,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   title: Text(
                     "Personal info",
-                    style: _cardTitleStyle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   subtitle: Column(
                     children: <Widget>[
@@ -260,7 +246,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   title: Text(
                     "Location",
-                    style: _cardTitleStyle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   subtitle: Column(
                     children: <Widget>[
@@ -300,7 +286,7 @@ class _CompanyInfoState extends State<CompanyInfo> {
                       EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   title: Text(
                     "API Info",
-                    style: _cardTitleStyle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   subtitle: Column(
                     children: <Widget>[
@@ -328,7 +314,8 @@ class _CompanyInfoState extends State<CompanyInfo> {
                           Text("Documentation: "),
                           Expanded(
                             child: GestureDetector(
-                              onTap: () => openUrl("https://github.com/r-spacex/SpaceX-API"),
+                              onTap: () => openUrl(
+                                  "https://github.com/r-spacex/SpaceX-API"),
                               child: Text(
                                 "GitHub",
                                 style: TextStyle(color: Colors.blue),
@@ -337,104 +324,6 @@ class _CompanyInfoState extends State<CompanyInfo> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      height: 35.0,
-                      width: 35.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                "https://avatars1.githubusercontent.com/u/57572343?s=200&v=4"),
-                            fit: BoxFit.fitWidth,
-                          )),
-                    ),
-                    SizedBox(width: 5.0),
-                    Text(
-                      "4Twenty Solutions",
-                      textAlign: TextAlign.center,
-                      style: _sectionTitleStyle,
-                    )
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 15),
-                child: ListTile(
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                    title: Text(
-                      "Summary",
-                      style: _cardTitleStyle,
-                    ),
-                    subtitle: Text(
-                      "Our main task is to make a working and quality product. We feed all your ideas with our digital mastery and non-standard thinking considering all the tasks that you set by contacting us. We build long-term relationships with our clients and partners, transparency and straightforwardness are the key to such relationships. Our team gathered in itself only experienced professionals, focused on results and reputation.",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 7.5, horizontal: 15),
-                child: ListTile(
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  title: Text(
-                    "Contacts",
-                    style: _cardTitleStyle,
-                  ),
-                  subtitle: Column(
-                    children: <Widget>[
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.email),
-                          SizedBox(width: 5),
-                          GestureDetector(
-                            child: Text("support@4twenty.solutions"),
-                            onTap: _onEmail,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.web),
-                          SizedBox(width: 5),
-                          GestureDetector(
-                            onTap: _linkedIn,
-                            child: Text("Linked In"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.code),
-                          SizedBox(width: 5),
-                          GestureDetector(
-                            onTap: _onGitHubApp,
-                            child: Text("SpaceX Flutter"),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Icon(Icons.code),
-                          SizedBox(width: 5),
-                          GestureDetector(
-                            onTap: _onGitHub,
-                            child: Text("GitHub"),
-                          ),
-                        ],
-                      )
                     ],
                   ),
                 ),
