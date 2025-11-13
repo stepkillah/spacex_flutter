@@ -5,7 +5,8 @@ import 'launchContent.dart';
 class NextLaunchCard extends StatelessWidget {
   final Future nextLaunchFuture;
 
-  const NextLaunchCard({Key key, this.nextLaunchFuture}) : super(key: key);
+  const NextLaunchCard({required Key key, required this.nextLaunchFuture})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

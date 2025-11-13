@@ -13,7 +13,7 @@ class RootPage extends StatefulWidget {
 class _RootPageState extends State<RootPage> {
   int selectedIndex = 0;
   PageController controller = PageController();
-  List<Widget> homePages = new List();
+  List<Widget> homePages = [];
   @override
   void initState() {
     super.initState();

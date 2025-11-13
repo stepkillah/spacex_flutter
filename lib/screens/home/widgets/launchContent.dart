@@ -7,15 +7,15 @@ Widget buildLoadedData(BuildContext context, Launch launch) {
   return Column(
     children: <Widget>[
       ListTile(
-        leading: Image.network(launch.patchUrl),
+        leading: Image.network(launch.patchUrl!),
         title: Text(
-          launch.name,
+          launch.name!,
         ),
         subtitle: Row(
           children: <Widget>[
             Text("Your time: "),
             Text(
-              DateFormat('yyyy-MM-dd – hh:mm:ss').format(launch.launchDate),
+              DateFormat('yyyy-MM-dd – hh:mm:ss').format(launch.launchDate!),
             ),
           ],
         ),
@@ -23,13 +23,13 @@ Widget buildLoadedData(BuildContext context, Launch launch) {
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: Text(
-          launch.details,
+          launch.details!,
           style: TextStyle(fontSize: 12.5),
         ),
       ),
-      ButtonBar(
+      OverflowBar(
         children: <Widget>[
-          FlatButton(
+          TextButton(
             onPressed: () {
               Navigator.of(context).pushNamed(PageRoutes.launchDetails);
             },

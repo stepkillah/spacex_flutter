@@ -4,7 +4,8 @@ import 'package:flutter_spacex/screens/home/widgets/launchContent.dart';
 class LatestLaunchCard extends StatelessWidget {
   final Future latestFuture;
 
-  const LatestLaunchCard({Key key, this.latestFuture}) : super(key: key);
+  const LatestLaunchCard({required Key key, required this.latestFuture})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

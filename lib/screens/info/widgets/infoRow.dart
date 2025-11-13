@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spacex/data/companyInfoDto.dart';
 import 'package:shimmer/shimmer.dart';
 
 class InfoRow extends StatefulWidget {
   final String rowName;
-  final Future future;
+  final Future? future;
   final String Function(AsyncSnapshot<dynamic> snapshot) futureSnapshot;
-  final void Function(AsyncSnapshot<dynamic> snapshot) onClick;
+  final void Function(AsyncSnapshot<dynamic> snapshot)? onClick;
 
   const InfoRow(
-      {Key key, this.rowName, this.future, this.futureSnapshot, this.onClick})
+      {required Key key, required this.rowName, this.future, required this.futureSnapshot, this.onClick})
       : super(key: key);
 
   @override
@@ -27,17 +26,12 @@ class _InfoRowState extends State<InfoRow> {
           future: widget.future,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return widget.onClick != null
-                  ? GestureDetector(
-                      onTap: () => widget.onClick.call(snapshot),
+              return GestureDetector(
+                      onTap: () => widget.onClick?.call(snapshot),
                       child: Text(
                         widget.futureSnapshot.call(snapshot),
                         style: TextStyle(color: Colors.blue),
                       ),
-                    )
-                  : Text(
-                      widget.futureSnapshot.call(snapshot),
-                      style: TextStyle(color: Colors.white),
                     );
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");

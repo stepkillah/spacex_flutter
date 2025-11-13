@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/data/launchDto.dart';
-import 'package:flutter_spacex/pageRoutes.dart';
 import 'package:flutter_spacex/screens/home/widgets/latestLaunchCard.dart';
 import 'package:flutter_spacex/screens/home/widgets/nextLaunchCard.dart';
 import 'package:flutter_spacex/services/spacex_api.dart';
-import 'package:flutter_spacex/widgets/bottomMenu.dart';
-import 'package:flutter_spacex/widgets/navDrawer.dart';
-import 'package:intl/intl.dart';
 
 class MyHomePage extends StatefulWidget {
   static const String routeName = '/home';
@@ -21,12 +17,11 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<Launch> futureLatestLaunch;
-  Future<Launch> futureNextLaunch;
+  late Future<Launch> futureLatestLaunch;
+  late Future<Launch> futureNextLaunch;
 
   @override
   void initState() {
@@ -52,8 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            NextLaunchCard(nextLaunchFuture: futureNextLaunch),
-            LatestLaunchCard(latestFuture: futureLatestLaunch),
+            NextLaunchCard(
+                key: Key("next_launch_card"),
+                nextLaunchFuture: futureNextLaunch),
+            LatestLaunchCard(
+                key: Key("latest_launch_card"),
+                latestFuture: futureLatestLaunch),
           ],
         ),
       ),

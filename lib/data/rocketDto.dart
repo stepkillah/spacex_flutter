@@ -1,11 +1,10 @@
-import 'package:flutter/widgets.dart';
 
 /// Auxiliary model to storage all details about a rocket which performed a SpaceX's mission.
 class Rocket {
-  final String id, name;
-  final List<Core> firstStage;
-  final SecondStage secondStage;
-  final Fairing fairing;
+  final String? id, name;
+  final List<Core>? firstStage;
+  final SecondStage? secondStage;
+  final Fairing? fairing;
 
   const Rocket({
     this.id,
@@ -31,9 +30,9 @@ class Rocket {
 
 /// Auxiliary model to storage details about a core in a particular mission.
 class Core {
-  final String id, landingType, landingZone;
-  final bool reused, landingSuccess, landingIntent, gridfins, legs;
-  final int block, flights;
+  final String? id, landingType, landingZone;
+  final bool? reused, landingSuccess, landingIntent, gridfins, legs;
+  final int? block, flights;
 
   const Core({
     this.id,
@@ -67,8 +66,8 @@ class Core {
 
 /// Details about a rocket's second stage.
 class SecondStage {
-  final int block;
-  final List<Payload> payloads;
+  final int? block;
+  final List<Payload>? payloads;
 
   const SecondStage({this.block, this.payloads});
 
@@ -85,9 +84,9 @@ class SecondStage {
 
 /// Specific details about an one-of-a-kink space payload.
 class Payload {
-  final String id, capsuleSerial, customer, nationality, manufacturer, orbit;
-  final bool reused;
-  final num mass, periapsis, apoapsis, inclination, period;
+  final String? id, capsuleSerial, customer, nationality, manufacturer, orbit;
+  final bool? reused;
+  final num? mass, periapsis, apoapsis, inclination, period;
 
   const Payload({
     this.id,
@@ -124,7 +123,7 @@ class Payload {
 
 /// Auxiliary model to storage details about rocket's fairings.
 class Fairing {
-  final bool reused, recoveryAttempt, recoverySuccess;
+  final bool? reused, recoveryAttempt, recoverySuccess;
 
   const Fairing({
     this.reused,

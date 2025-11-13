@@ -3,18 +3,18 @@ import 'package:flutter_spacex/data/rocketDto.dart';
 /// Details about a specific launch, performed by a Falcon rocket,
 /// including launch & landing pads, rocket & payload information...
 class Launch {
-  final int number, launchWindow;
-  final String name,
+  final int? number, launchWindow;
+  final String? name,
       launchpadId,
       launchpadName,
       patchUrl,
       details,
       tentativePrecision;
-  final List<String> links, photos;
-  final DateTime launchDate, staticFireDate;
-  final bool launchSuccess, tentativeTime, upcoming;
-  final Rocket rocket;
-  final FailureDetails failureDetails;
+  final List<String>? links, photos;
+  final DateTime? launchDate, staticFireDate;
+  final bool? launchSuccess, tentativeTime, upcoming;
+  final Rocket? rocket;
+  final FailureDetails? failureDetails;
 
   const Launch({
     this.number,
@@ -63,7 +63,7 @@ class Launch {
     );
   }
 
-  static DateTime setStaticFireDate(String date) {
+  static DateTime? setStaticFireDate(String date) {
     try {
       return DateTime.parse(date).toLocal();
     } catch (e) {
@@ -71,7 +71,7 @@ class Launch {
     }
   }
 
-  static FailureDetails setFailureDetails(Map<String, dynamic> failureDetails) {
+  static FailureDetails? setFailureDetails(Map<String, dynamic> failureDetails) {
     try {
       return FailureDetails.fromJson(failureDetails);
     } catch (e) {
@@ -82,8 +82,8 @@ class Launch {
 
 /// Auxiliar model to storage details about a launch failure.
 class FailureDetails {
-  final num time, altitude;
-  final String reason;
+  final num? time, altitude;
+  final String? reason;
 
   const FailureDetails({this.time, this.altitude, this.reason});
 

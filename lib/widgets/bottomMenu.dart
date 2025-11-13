@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -41,7 +40,7 @@ class _BottomMenuState extends State<BottomMenu> {
                 iconSize: 24,
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
                 duration: Duration(milliseconds: 800),
-                tabBackgroundColor: Colors.grey[800],
+                tabBackgroundColor: Colors.grey[800]!,
                 tabs: [
                   GButton(
                     icon: Icons.home,

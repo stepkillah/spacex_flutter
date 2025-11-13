@@ -1,18 +1,18 @@
 class CompanyInfoDto {
-  final String name;
-  final String founder;
-  final int foundedYear;
-  final int employees;
-  final int vehicles;
-  final int launchSites;
-  final int testSites;
-  final String ceo;
-  final String cto;
-  final String coo;
-  final String ctoPropulsion;
-  final int valuation;
-  final Headquarters headquarters;
-  final String summary;
+  final String? name;
+  final String? founder;
+  final int? foundedYear;
+  final int? employees;
+  final int? vehicles;
+  final int? launchSites;
+  final int? testSites;
+  final String? ceo;
+  final String? cto;
+  final String? coo;
+  final String? ctoPropulsion;
+  final int? valuation;
+  final Headquarters? headquarters;
+  final String? summary;
 
   CompanyInfoDto(
       {this.name,
@@ -51,16 +51,16 @@ class CompanyInfoDto {
 }
 
 class Headquarters {
-  final String address;
-  final String city;
-  final String state;
+  final String? address;
+  final String? city;
+  final String? state;
 
   Headquarters({this.address, this.city, this.state});
 
   factory Headquarters.fromJson(Map<String, dynamic> json) {
     return Headquarters(
       address: json['address'],
-      city: json['city'],
+      city: json['city'], 
       state: json['state'],
     );
   }

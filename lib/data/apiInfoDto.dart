@@ -1,10 +1,10 @@
 class ApiInfoDto {
-  final String projectName;
-  final String version;
-  final String projectLink;
-  final String organization;
-  final String organizationLink;
-  final String description;
+  final String? projectName;
+  final String? version;
+  final String? projectLink;
+  final String? organization;
+  final String? organizationLink;
+  final String? description;
 
   ApiInfoDto(
       {this.projectName,

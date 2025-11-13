@@ -10,7 +10,7 @@ class LaunchesList extends StatefulWidget {
 }
 
 class _LaunchesListState extends State<LaunchesList> {
-  Future<Launch> futureLatestLaunch;
+  late Future<Launch> futureLatestLaunch;
 
   @override
   void initState() {
@@ -27,9 +27,9 @@ class _LaunchesListState extends State<LaunchesList> {
         child: FutureBuilder(
           future: futureLatestLaunch,
           builder: (context, snapshot) {
-            if (snapshot.hasData) {
+            if (snapshot.hasData && snapshot.data?.name != null) {
               return Text(
-                snapshot.data.name,
+                snapshot.data!.name!,
                 style: TextStyle(color: Colors.white),
               );
             } else if (snapshot.hasError) {
