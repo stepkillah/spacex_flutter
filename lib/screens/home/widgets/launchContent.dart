@@ -16,7 +16,7 @@ Widget buildLoadedData(BuildContext context, Launch launch) {
           children: <Widget>[
             Text("Your time: "),
             Text(
-              DateFormat('yyyy-MM-dd – hh:mm:ss').format(launch.launchDate!),
+              DateFormat('yyyy-MM-dd – hh:mm:ss').format(launch.launchDateLocal!),
             ),
           ],
         ),

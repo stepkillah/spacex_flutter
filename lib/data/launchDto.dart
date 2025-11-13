@@ -62,7 +62,9 @@ class Launch {
       id: json['id'],
       flightNumber: json['flight_number'],
       name: json['name'],
-      dateUtc: json['date_utc'] != null ? DateTime.parse(json['date_utc']).toLocal() : null,
+      dateUtc: json['date_utc'] != null
+          ? DateTime.parse(json['date_utc']).toLocal()
+          : null,
       dateUnix: json['date_unix'],
       dateLocal: json['date_local'],
       datePrecision: json['date_precision'],
@@ -73,18 +75,26 @@ class Launch {
       launchpadId: json['launchpad'],
       crew: json['crew'] != null ? List<String>.from(json['crew']) : null,
       ships: json['ships'] != null ? List<String>.from(json['ships']) : null,
-      capsules: json['capsules'] != null ? List<String>.from(json['capsules']) : null,
-      payloads: json['payloads'] != null ? List<String>.from(json['payloads']) : null,
+      capsules:
+          json['capsules'] != null ? List<String>.from(json['capsules']) : null,
+      payloads:
+          json['payloads'] != null ? List<String>.from(json['payloads']) : null,
       links: json['links'] != null ? LaunchLinks.fromJson(json['links']) : null,
-      staticFireDateUtc: json['static_fire_date_utc'] != null ? DateTime.parse(json['static_fire_date_utc']).toLocal() : null,
+      staticFireDateUtc: json['static_fire_date_utc'] != null
+          ? DateTime.parse(json['static_fire_date_utc']).toLocal()
+          : null,
       staticFireDateUnix: json['static_fire_date_unix'],
       net: json['net'],
       window: json['window'],
-      cores: json['cores'] != null ? (json['cores'] as List).map((c) => CoreDetail.fromJson(c)).toList() : null,
+      cores: json['cores'] != null
+          ? (json['cores'] as List).map((c) => CoreDetail.fromJson(c)).toList()
+          : null,
       autoUpdate: json['auto_update'],
       tbd: json['tbd'],
       launchLibraryId: json['launch_library_id'],
-      failures: json['failures'] != null ? (json['failures'] as List).map((f) => Failure.fromJson(f)).toList() : null,
+      failures: json['failures'] != null
+          ? (json['failures'] as List).map((f) => Failure.fromJson(f)).toList()
+          : null,
     );
   }
 
@@ -92,6 +102,7 @@ class Launch {
   String? get patchUrl => links?.patch?.small ?? links?.patch?.large;
   DateTime? get launchDate => dateUtc;
   bool? get launchSuccess => success;
+  DateTime? get launchDateLocal => dateUtc != null ? dateUtc!.toLocal() : null;
 }
 
 /// Launch links structure
@@ -119,8 +130,10 @@ class LaunchLinks {
   factory LaunchLinks.fromJson(Map<String, dynamic> json) {
     return LaunchLinks(
       patch: json['patch'] != null ? PatchLinks.fromJson(json['patch']) : null,
-      reddit: json['reddit'] != null ? RedditLinks.fromJson(json['reddit']) : null,
-      flickr: json['flickr'] != null ? FlickrLinks.fromJson(json['flickr']) : null,
+      reddit:
+          json['reddit'] != null ? RedditLinks.fromJson(json['reddit']) : null,
+      flickr:
+          json['flickr'] != null ? FlickrLinks.fromJson(json['flickr']) : null,
       presskit: json['presskit'],
       webcast: json['webcast'],
       youtubeId: json['youtube_id'],
@@ -171,7 +184,8 @@ class FlickrLinks {
   factory FlickrLinks.fromJson(Map<String, dynamic> json) {
     return FlickrLinks(
       small: json['small'] != null ? List<String>.from(json['small']) : null,
-      original: json['original'] != null ? List<String>.from(json['original']) : null,
+      original:
+          json['original'] != null ? List<String>.from(json['original']) : null,
     );
   }
 }
