@@ -18,35 +18,42 @@ class InfoRow extends StatefulWidget {
 class _InfoRowState extends State<InfoRow> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(widget.rowName + ": "),
-        FutureBuilder(
-          future: widget.future,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return GestureDetector(
-                      onTap: () => widget.onClick?.call(snapshot),
-                      child: Text(
-                        widget.futureSnapshot.call(snapshot),
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    );
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            // By default, show a loading spinner.
-            return Shimmer.fromColors(
-              baseColor: Colors.white10,
-              highlightColor: Colors.white60,
-              child: Container(
-                height: 15.0,
-                width: 75.0,
-                color: Colors.white70,
-              ),
-            );
-          },
+        Expanded(
+          child: FutureBuilder(
+            future: widget.future,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return GestureDetector(
+                  onTap: () => widget.onClick?.call(snapshot),
+                  child: Text(
+                    widget.futureSnapshot.call(snapshot),
+                    style: TextStyle(color: Colors.blue),
+                    softWrap: true,
+                    overflow: TextOverflow.visible,
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Text(
+                  "${snapshot.error}",
+                  softWrap: true,
+                );
+              }
+              // By default, show a loading spinner.
+              return Shimmer.fromColors(
+                baseColor: Colors.white10,
+                highlightColor: Colors.white60,
+                child: Container(
+                  height: 15.0,
+                  width: 75.0,
+                  color: Colors.white70,
+                ),
+              );
+            },
+          ),
         )
       ],
     );

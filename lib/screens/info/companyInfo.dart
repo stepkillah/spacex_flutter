@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spacex/data/CompanyInfoDto.dart';
-import 'package:flutter_spacex/data/apiInfoDto.dart';
 import 'package:flutter_spacex/screens/info/widgets/infoRow.dart';
 import 'package:flutter_spacex/services/spacex_api.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+// Import the base URL constant
+import 'package:flutter_spacex/services/spacex_api.dart' show baseApiUrlRoot;
 
 class CompanyInfo extends StatefulWidget {
   static const String routeName = '/company_info';
@@ -15,7 +17,6 @@ class CompanyInfo extends StatefulWidget {
 
 class _CompanyInfoState extends State<CompanyInfo> {
   late Future<CompanyInfoDto> futureCompanyInfo;
-  late Future<ApiInfoDto> futureApiInfo;
   static const TextStyle _cardTitleStyle = TextStyle(
     color: Colors.white,
     fontWeight: FontWeight.w500,
@@ -31,12 +32,11 @@ class _CompanyInfoState extends State<CompanyInfo> {
   void initState() {
     super.initState();
     futureCompanyInfo = getCompanyInfo();
-    futureApiInfo = getApiInfo();
   }
 
   void openUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
     } else {
       throw 'Could not launch $url';
     }
@@ -305,83 +305,38 @@ class _CompanyInfoState extends State<CompanyInfo> {
                   subtitle: Column(
                     children: <Widget>[
                       SizedBox(height: 5),
-                      InfoRow(
-                        key: Key("name"),
-                        rowName: "Name",
-                        future: futureApiInfo,
-                        futureSnapshot: (snapshot) {
-                          return snapshot.data.projectName;
-                        },
-                      ),
-                      SizedBox(height: 2.5),
-                      InfoRow(
-                          key: Key("version"),
-                          rowName: "Version",
-                          future: futureApiInfo,
-                          futureSnapshot: (snapshot) {
-                            return snapshot.data.version;
-                          }),
-                      SizedBox(height: 2.5),
-                      InfoRow(
-                          key: Key("link"),
-                          rowName: "Link",
-                          onClick: (snapshot) =>
-                              openUrl(snapshot.data.projectLink),
-                          future: futureApiInfo,
-                          futureSnapshot: (snapshot) {
-                            return snapshot.data.projectLink;
-                          }),
-                      SizedBox(height: 2.5),
-                      InfoRow(
-                          key: Key("organization"),
-                          rowName: "Organization",
-                          future: futureApiInfo,
-                          futureSnapshot: (snapshot) {
-                            return snapshot.data.organization;
-                          }),
-                      SizedBox(height: 2.5),
-                      InfoRow(
-                          key: Key("organization_link"),
-                          rowName: "Organization link",
-                          onClick: (snapshot) =>
-                              openUrl(snapshot.data.organizationLink),
-                          future: futureApiInfo,
-                          futureSnapshot: (snapshot) {
-                            return snapshot.data.organizationLink;
-                          }),
-                      ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        title: Text("Descirption"),
-                        subtitle: FutureBuilder(
-                          future: futureApiInfo,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Text(
-                                snapshot.data?.description ?? '',
-                                style: TextStyle(color: Colors.white),
-                              );
-                            } else if (snapshot.hasError) {
-                              return Text("${snapshot.error}");
-                            }
-                            // By default, show a loading spinner.
-                            return Shimmer.fromColors(
-                              baseColor: Colors.white10,
-                              highlightColor: Colors.white60,
-                              child: Container(
-                                height: 15.0,
-                                color: Colors.white70,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("API URL: "),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () => openUrl(baseApiUrlRoot),
+                              child: Text(
+                                baseApiUrlRoot,
+                                style: TextStyle(color: Colors.blue),
+                                softWrap: true,
                               ),
-                            );
-                          },
-                        ),
-                      )
-                      // SizedBox(height: 2.5),
-                      // InfoRow(
-                      //     rowName: "Description",
-                      //     future: futureApiInfo,
-                      //     futureSnapshot: (snapshot) {
-                      //       return snapshot.data.description;
-                      //     }),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Documentation: "),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () => openUrl("https://github.com/r-spacex/SpaceX-API"),
+                              child: Text(
+                                "GitHub",
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
