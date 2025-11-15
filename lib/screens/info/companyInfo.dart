@@ -6,7 +6,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // Import the base URL constant
-import 'package:flutter_spacex/services/spacex_api.dart' show baseApiUrlRoot;
 
 class CompanyInfo extends StatefulWidget {
   static const String routeName = '/company_info';
